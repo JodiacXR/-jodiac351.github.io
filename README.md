@@ -1,2 +1,2 @@
-# -jodiac351.github.io
+# -jodiacXR.github.io
 potfolio website
