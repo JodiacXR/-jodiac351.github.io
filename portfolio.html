@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Davis Magnus | AI Developer</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0f;
+  --surface:#13131a;
+  --card:#1a1a24;
+  --border:#2a2a3a;
+  --accent:#7c6ff7;
+  --accent2:#4ecdc4;
+  --text:#f0f0f5;
+  --muted:#8888aa;
+}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',sans-serif;line-height:1.6}
+a{color:var(--accent);text-decoration:none}
+
+nav{position:fixed;top:0;width:100%;background:rgba(10,10,15,0.95);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;z-index:100;backdrop-filter:blur(8px)}
+.logo{font-weight:700;font-size:1.1rem;color:var(--accent)}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{color:var(--muted);font-size:0.9rem;transition:color 0.2s}
+.nav-links a:hover{color:var(--text)}
+
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:20%;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(124,111,247,0.08) 0%,transparent 70%);pointer-events:none}
+.badge{display:inline-block;background:rgba(124,111,247,0.15);border:1px solid rgba(124,111,247,0.3);color:var(--accent);padding:0.4rem 1rem;border-radius:2rem;font-size:0.8rem;margin-bottom:1.5rem;letter-spacing:0.05em}
+h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:700;line-height:1.1;margin-bottom:1.5rem}
+h1 span{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:1.1rem;color:var(--muted);max-width:600px;margin:0 auto 2.5rem}
+.btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn{padding:0.75rem 1.75rem;border-radius:0.5rem;font-size:0.95rem;font-weight:500;cursor:pointer;transition:all 0.2s;border:none}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#6a5ef5;transform:translateY(-1px)}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--text)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+
+section{padding:5rem 2rem;max-width:1100px;margin:0 auto}
+.section-label{font-size:0.8rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem}
+h2{font-size:2rem;font-weight:700;margin-bottom:1rem}
+.divider{width:3rem;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;margin-bottom:3rem}
+
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.skill-card{background:var(--card);border:1px solid var(--border);border-radius:0.75rem;padding:1.5rem;transition:border-color 0.2s}
+.skill-card:hover{border-color:var(--accent)}
+.skill-icon{font-size:1.75rem;margin-bottom:0.75rem}
+.skill-card h3{font-size:1rem;font-weight:600;margin-bottom:0.5rem}
+.skill-card p{font-size:0.85rem;color:var(--muted)}
+
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.project-card{background:var(--card);border:1px solid var(--border);border-radius:0.75rem;padding:1.75rem;transition:transform 0.2s,border-color 0.2s}
+.project-card:hover{transform:translateY(-4px);border-color:var(--accent)}
+.project-tag{display:inline-block;background:rgba(78,205,196,0.1);border:1px solid rgba(78,205,196,0.2);color:var(--accent2);font-size:0.75rem;padding:0.2rem 0.65rem;border-radius:1rem;margin-bottom:1rem}
+.project-card h3{font-size:1.05rem;font-weight:600;margin-bottom:0.5rem}
+.project-card p{font-size:0.85rem;color:var(--muted);margin-bottom:1.25rem}
+.tech-tags{display:flex;flex-wrap:wrap;gap:0.4rem}
+.tech{background:rgba(124,111,247,0.1);color:var(--accent);font-size:0.75rem;padding:0.2rem 0.6rem;border-radius:0.3rem}
+
+.gigs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.25rem}
+.gig-card{background:var(--card);border:1px solid var(--border);border-radius:0.75rem;padding:1.5rem}
+.gig-card.featured{border-color:var(--accent)}
+.gig-price{font-size:1.5rem;font-weight:700;color:var(--accent);margin-bottom:0.25rem}
+.gig-card h3{font-size:0.95rem;font-weight:600;margin-bottom:0.75rem}
+.gig-features{list-style:none}
+.gig-features li{font-size:0.82rem;color:var(--muted);padding:0.2rem 0}
+.gig-features li::before{content:'✓ ';color:var(--accent2)}
+.popular{display:inline-block;background:rgba(124,111,247,0.15);color:var(--accent);font-size:0.7rem;padding:0.2rem 0.6rem;border-radius:1rem;margin-bottom:0.75rem}
+
+.contact-box{background:var(--card);border:1px solid var(--border);border-radius:1rem;padding:3rem;text-align:center;max-width:600px;margin:0 auto}
+.contact-box h3{font-size:1.5rem;margin-bottom:0.75rem}
+.contact-box p{color:var(--muted);margin-bottom:2rem}
+.contact-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.contact-link{display:flex;align-items:center;gap:0.5rem;padding:0.6rem 1.25rem;border:1px solid var(--border);border-radius:0.5rem;color:var(--text);font-size:0.9rem;transition:all 0.2s}
+.contact-link:hover{border-color:var(--accent);color:var(--accent)}
+
+footer{text-align:center;padding:2rem;color:var(--muted);font-size:0.85rem;border-top:1px solid var(--border)}
+
+.stat-row{display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:3rem}
+.stat{text-align:center}
+.stat-num{font-size:2rem;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{font-size:0.8rem;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Joshua Kyalo</div>
+  <div class="nav-links">
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#gigs">Hire Me</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div>
+    <div class="badge">🤖 Available for Freelance</div>
+    <h1>AI Developer &amp;<br><span>Integration Expert</span></h1>
+    <p>I build intelligent applications powered by ChatGPT, Claude &amp; modern AI APIs. BSc Software Engineering — Zetech University.</p>
+    <div class="btns">
+      <button class="btn btn-primary" onclick="document.getElementById('gigs').scrollIntoView({behavior:'smooth'})">Hire Me on Fiverr</button>
+      <button class="btn btn-outline" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View Projects</button>
+    </div>
+  </div>
+</div>
+
+<section id="skills">
+  <div class="section-label">What I do</div>
+  <h2>Skills &amp; Expertise</h2>
+  <div class="divider"></div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">🧠</div>
+      <h3>AI API Integration</h3>
+      <p>ChatGPT, Claude, Gemini — integrate powerful AI into any product</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🌐</div>
+      <h3>Web Development</h3>
+      <p>HTML, CSS, JavaScript — clean and responsive web apps</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🤖</div>
+      <h3>AI Chatbots</h3>
+      <p>Custom chatbots for customer support, sales, and automation</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🗄️</div>
+      <h3>Database Design</h3>
+      <p>MySQL, MariaDB — schema design, queries, and optimization</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📄</div>
+      <h3>Document AI</h3>
+      <p>PDF summarizers, extractors, and document intelligence tools</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">⚙️</div>
+      <h3>AI Automation</h3>
+      <p>Automate workflows using AI — save time, reduce manual work</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-label">Portfolio</div>
+  <h2>Demo Projects</h2>
+  <div class="divider"></div>
+  <div class="projects-grid">
+    <div class="project-card">
+      <span class="project-tag">AI Chatbot</span>
+      <h3>SmartSupport — Customer Service Bot</h3>
+      <p>A fully functional AI-powered support chatbot that answers FAQs, handles complaints, and escalates to humans when needed.</p>
+      <div class="tech-tags">
+        <span class="tech">Claude API</span>
+        <span class="tech">JavaScript</span>
+        <span class="tech">HTML/CSS</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <span class="project-tag">Document AI</span>
+      <h3>DocBrief — PDF Summarizer</h3>
+      <p>Upload any PDF and get a clean, structured summary in seconds. Built for professionals who need to digest documents fast.</p>
+      <div class="tech-tags">
+        <span class="tech">ChatGPT API</span>
+        <span class="tech">Python</span>
+        <span class="tech">JavaScript</span>
+      </div>
+    </div>
+    <div class="project-card">
+      <span class="project-tag">E-Commerce AI</span>
+      <h3>ProductGen — Description Generator</h3>
+      <p>Generate SEO-optimized product descriptions for any item. E-commerce sellers save hours of copywriting work.</p>
+      <div class="tech-tags">
+        <span class="tech">GPT-4</span>
+        <span class="tech">React</span>
+        <span class="tech">Node.js</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gigs">
+  <div class="section-label">Fiverr Services</div>
+  <h2>What I Offer</h2>
+  <div class="divider"></div>
+  <div class="gigs-grid">
+    <div class="gig-card">
+      <div class="gig-price">$50</div>
+      <h3>Basic AI Chatbot</h3>
+      <ul class="gig-features">
+        <li>Simple Q&amp;A chatbot</li>
+        <li>Claude or ChatGPT API</li>
+        <li>Web embed ready</li>
+        <li>3 day delivery</li>
+      </ul>
+    </div>
+    <div class="gig-card featured">
+      <div class="popular">⭐ Most Popular</div>
+      <div class="gig-price">$120</div>
+      <h3>Custom AI Web App</h3>
+      <ul class="gig-features">
+        <li>Full AI-powered web app</li>
+        <li>Custom prompting &amp; logic</li>
+        <li>Clean modern UI</li>
+        <li>5 day delivery</li>
+        <li>1 revision included</li>
+      </ul>
+    </div>
+    <div class="gig-card">
+      <div class="gig-price">$200</div>
+      <h3>AI Business Automation</h3>
+      <ul class="gig-features">
+        <li>Full workflow automation</li>
+        <li>API integrations</li>
+        <li>Database + backend</li>
+        <li>7 day delivery</li>
+        <li>2 revisions included</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-label">Let's work together</div>
+  <h2>Contact Me</h2>
+  <div class="divider"></div>
+  <div class="contact-box">
+    <h3>Ready to build something with AI?</h3>
+    <p>I'm available for freelance projects. Fast responses, quality work, and results that impress your clients.</p>
+    <div style="margin-bottom:1.5rem;color:var(--muted);font-size:0.9rem">
+      <p>📧 joshuakyalo351@gmail.com</p>
+      <p>📞 +254 769 794 348</p>
+    </div>
+    <div class="contact-links">
+      <a class="contact-link" href="#">💼 Fiverr Profile</a>
+      <a class="contact-link" href="mailto:joshuakyalo351@gmail.com">✉️ Email Me</a>
+      <a class="contact-link" href="#">💻 GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Joshua Kyalo · AI Developer · Nairobi, Kenya
+</footer>
+
+</body>
+</html>
